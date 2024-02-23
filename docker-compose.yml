@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  php:
+    build: docker/php-apache2
+    container_name: prestam-bot
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    volumes:
+      - ./:/var/www/
+      - ./public:/var/www/html/
+      - ./docker/php-apache2/php.ini:/usr/local/etc/php/php.ini
+      - ./docker/php-apache2/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
